@@ -1,2 +1,3 @@
 # RazeCore
-Following along with a RW tutorial
+
+A description of this package.
