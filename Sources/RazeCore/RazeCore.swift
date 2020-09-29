@@ -4,14 +4,16 @@ import SwiftUI
 
 
 
-/// <#Description#>
-/// - Parameters:
-///     - Warning: The "#" symbol is stripped from the begining
-///     - hexString: expects 6 digit hex string in the format RRGGBB, with or without leading #
-///     - alpha: CGFloat for alpha, 0 to 1, default 1
-/// - Returns: UIColor determined by `hexString`
-class RazeCore {
-    class func colorFromHexString(_ hexString: String, alpha: CGFloat = 1.0) -> UIColor {
+
+public class RazeCore {
+    
+    /// Allows you to convert a 6 digit hexadecimal string into a UIColor string
+    /// - Parameters:
+    ///     - Warning: The "#" symbol is stripped from the begining
+    ///     - hexString: expects 6 digit hex string in the format RRGGBB, with or without leading #
+    ///     - alpha: CGFloat for alpha, 0 to 1, default 1
+    /// - Returns: UIColor determined by `hexString`
+    internal class func colorFromHexString(_ hexString: String, alpha: CGFloat = 1.0) -> UIColor {
       let r, g, b: CGFloat
       let offset = hexString.hasPrefix("#") ? 1 : 0
       let start = hexString.index(hexString.startIndex, offsetBy: offset)
@@ -25,5 +27,11 @@ class RazeCore {
         return UIColor(red: r, green: g, blue: b, alpha: alpha)
       }
       return UIColor(red: 0, green: 0, blue: 0, alpha: alpha)
+    }
+    
+    
+    /// The one true color.
+    public static var razeColor: UIColor {
+        return self.colorFromHexString("006736")
     }
 }
